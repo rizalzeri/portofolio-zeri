@@ -32,6 +32,8 @@ function ExperienceItem({ date, title, company, details }) {
 }
 
 export default function Home() {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   return (
     <div className={styles.main}>
       <div className="area">
@@ -43,14 +45,28 @@ export default function Home() {
       
       {/* Navbar */}
       <nav className={styles.navbar}>
-        <ul className={styles.navLinks}>
-          <li className={styles.navItem}><a href="#about">About</a></li>
-          <li className={styles.navItem}><a href="#experience">Experience</a></li>
-          <li className={styles.navItem}><a href="#projects">Projects</a></li>
-          <li className={styles.navItem}><a href="#skills">Skills</a></li>
-          <li className={styles.navItem}><a href="#org-certs">Organizations & Certs</a></li>
-          <li className={styles.navItem}><a href="#contact">Contact</a></li>
-        </ul>
+        <div className={styles.navContainer}>
+          <div className={styles.navBrand}>RZS</div>
+          
+          <button 
+            className={`${styles.mobileMenuBtn} ${isMenuOpen ? styles.open : ""}`} 
+            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            aria-label="Toggle navigation menu"
+          >
+            <span></span>
+            <span></span>
+            <span></span>
+          </button>
+
+          <ul className={`${styles.navLinks} ${isMenuOpen ? styles.navActive : ""}`}>
+            <li className={styles.navItem}><a href="#about" onClick={() => setIsMenuOpen(false)}>About</a></li>
+            <li className={styles.navItem}><a href="#experience" onClick={() => setIsMenuOpen(false)}>Experience</a></li>
+            <li className={styles.navItem}><a href="#projects" onClick={() => setIsMenuOpen(false)}>Projects</a></li>
+            <li className={styles.navItem}><a href="#skills" onClick={() => setIsMenuOpen(false)}>Skills</a></li>
+            <li className={styles.navItem}><a href="#org-certs" onClick={() => setIsMenuOpen(false)}>Organizations & Certs</a></li>
+            <li className={styles.navItem}><a href="#contact" onClick={() => setIsMenuOpen(false)}>Contact</a></li>
+          </ul>
+        </div>
       </nav>
 
       {/* Hero Section */}
