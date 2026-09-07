@@ -16,7 +16,7 @@ function ExperienceItem({ date, title, company, details }) {
         <div className={styles.roadmapCompany}>{company}</div>
         
         <div className={styles.clickHint}>
-          {isOpen ? "▲ Click to collapse" : "▼ Click to expand details"}
+          {isOpen ? "Click to collapse" : "Click to expand details"}
         </div>
         
         <div className={`${styles.roadmapContent} ${isOpen ? styles.open : ""}`}>
@@ -34,16 +34,22 @@ function ExperienceItem({ date, title, company, details }) {
 export default function Home() {
   return (
     <div className={styles.main}>
+      <div className="area">
+        <ul className="circles">
+          <li></li><li></li><li></li><li></li><li></li>
+          <li></li><li></li><li></li><li></li><li></li>
+        </ul>
+      </div>
       
       {/* Navbar */}
       <nav className={styles.navbar}>
         <ul className={styles.navLinks}>
-          <li className={styles.navItem}><a href="#about">~/about</a></li>
-          <li className={styles.navItem}><a href="#experience">~/experience</a></li>
-          <li className={styles.navItem}><a href="#projects">~/projects</a></li>
-          <li className={styles.navItem}><a href="#skills">~/skills</a></li>
-          <li className={styles.navItem}><a href="#org-certs">~/org_certs</a></li>
-          <li className={styles.navItem}><a href="#contact">~/contact</a></li>
+          <li className={styles.navItem}><a href="#about">About</a></li>
+          <li className={styles.navItem}><a href="#experience">Experience</a></li>
+          <li className={styles.navItem}><a href="#projects">Projects</a></li>
+          <li className={styles.navItem}><a href="#skills">Skills</a></li>
+          <li className={styles.navItem}><a href="#org-certs">Organizations & Certs</a></li>
+          <li className={styles.navItem}><a href="#contact">Contact</a></li>
         </ul>
       </nav>
 
@@ -51,67 +57,101 @@ export default function Home() {
       <section id="about" className={styles.hero}>
         <div className={styles.heroContent}>
           
+          <div className={styles.heroImageContainer}>
+            <Image 
+              src="/pasfoto.png" 
+              alt="Rizal Zeri Subakti" 
+              width={150} 
+              height={150} 
+              className={styles.heroImage}
+              priority
+            />
+          </div>
+
           <h1 className={styles.heroName}>Rizal Zeri Subakti</h1>
-          <h2 className={styles.heroTitle}>System Engineering | IT Operations | DevOps</h2>
+          <h2 className={styles.heroTitle}>IT Professional | Full Stack & IT Operations</h2>
           
           <div className={styles.heroHighlight}>
             <p>
-              I am an IT professional specializing in <strong>Infrastructure</strong>, <strong>System Engineering</strong>, and <strong>IT Operations</strong>. 
+              IT Professional and Diponegoro University (Cum Laude, GPA 3.74) with 3 years of experience in <strong>Full Stack Development</strong>, <strong>DevOps</strong>, and <strong>IT Operations</strong>. 
               <br/><br/>
-              Experienced in managing and automating deployment pipelines using <strong>Docker</strong>, <strong>Nginx</strong>, and <strong>Apache</strong>. Skilled in Linux system administration, server configuration, and building real-time monitoring solutions with <strong>Grafana</strong>. I hold a Computer Science degree from Diponegoro University with <em>Cumlaude</em> honors (GPA 3.74).
+              Experienced in managing and automating CI/CD pipelines using Jenkins, Docker, and SonarQube, as well as deploying and maintaining applications across AWS and on-premise environments. Skilled in Linux system administration, server configuration, application monitoring, and workflow orchestration using Apache Airflow. Proficient in Python scripting for automation and process optimization, with a strong focus on infrastructure reliability, deployment efficiency, system security, and continuous improvement.
             </p>
           </div>
 
           <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center' }}>
-            <a href="#experience" className="btn btn-primary">View Pipeline</a>
-            <a href="#contact" className="btn btn-outline">Initialize Contact</a>
+            <a href="#experience" className="btn btn-primary">View Experience</a>
+            <a href="#contact" className="btn btn-outline">Contact Me</a>
           </div>
         </div>
       </section>
 
       {/* Experience Section */}
       <section id="experience" className={styles.sectionWrapper}>
-        <h2 className="section-title">deployment_pipeline</h2>
+        <h2 className="section-title">Professional Experience</h2>
         <div className={styles.roadmapContainer}>
           
+          <ExperienceItem 
+            date="01/26 – now"
+            title="Developer & IT Operations"
+            company="PT Mostrans Global Digilog (Kalbe Group) | Jakarta"
+            details={[
+              "Managed and optimized CI/CD pipelines using Jenkins and Docker, integrating SonarQube for automated code quality and security scanning. Acted as a bridge between Development, Product QA, and deployment processes, coordinating application build, testing, and release across AWS cloud and on-premise environments.",
+              "Managed AWS and VPS infrastructure, including EC2, RDS, and related services, to support reliable and scalable application operations.",
+              "Managed and maintained Apache Airflow as a workflow orchestration platform, including DAG development and configuration, scheduling, monitoring, and troubleshooting. Worked closely with Data Engineers and Development teams to ensure reliable execution of automated data workflows and smooth integration with application services.",
+              "Supported the Infrastructure team in maintaining application and system security by reviewing security scoreboards and vulnerability findings, identifying potential risks, and coordinating remediation activities."
+            ]}
+          />
+
           <ExperienceItem 
             date="03/24 – 12/25"
             title="Digital Application Developer"
             company="PT Citra Tubindo tbk (Vallourec Group) | Batam & Singapore"
             details={[
-              "Developed and deployed a comprehensive Production Tracking System for VAPC Singapore, covering the full workflow from Incoming Inspection to COC.",
-              "Built supporting automation tools using Python and TagUI to convert Siemens DAD files into structured XLSX format.",
-              "Implemented the system on an on-premise server environment. Set up Linux-based backend services, process daemons, scheduled tasks (crontab), and file management pipelines.",
-              "Designed and implemented a real-time monitoring dashboard using Grafana to track Work Orders, process status, and backend service logs."
+              "Developed and deployed a Production Tracking System for VAPC (Vallourec Asia Pacific Centre) Singapore, covering the entire workflow from Incoming Inspection to Certificate of Conformity (COC) to optimize production efficiency.",
+              "Designed and implemented a real-time monitoring dashboard using Grafana to track Work Order (WO) numbers, covering both planned and ongoing operations.",
+              "Developed an automation system to streamline data processing between Siemens and Yokogawa industrial machines. The system automatically converts DAD format files into structured XLSX format using Python scripting and the TagUI automation framework."
             ]}
           />
 
           <ExperienceItem 
             date="10/23 – 03/24"
-            title="Apprenticeship App & Prod Support"
-            company="PT Prudential Life Assurance | South Jakarta"
+            title="Apprenticeship Application & Production Support"
+            company="PT Prudential Life Assurance | South Jakarta (Hybrid)"
             details={[
-              "Assigned to the Digital & Information Technology Department to support internal application issue resolution, specifically in the New Business & Major Division.",
-              "Handled and resolved approximately 10-20 internal issues daily, ranging from system troubleshooting, application bugs, process optimization, and user support."
+              "Assigned to the Digital & Information Technology Department to support internal application issue resolution at Prudential, specifically in the New Business & Major Division, ensuring smooth production processes for users.",
+              "Handled and resolved approximately 10-20 internal issues daily, ranging from system troubleshooting, application bugs, process optimization, and user support, ensuring minimal disruption and improved operational efficiency."
             ]}
           />
 
           <ExperienceItem 
             date="05/23 – 10/23"
             title="Apprenticeship Fullstack Developer"
-            company="PT Pro Sistimatika Automasi (Compnet Group)"
+            company="PT Pro Sistimatika Automasi (Compnet Group) | West Jakarta (Hybrid)"
             details={[
-              "Responsible for executing tasks assigned by the Business Analyst Team to perform web maintenance and development for E-SKA, a system developed by the Ministry of Trade.",
-              "Developed and enhanced web application modules using React.js, Node.js, and PostgreSQL, ensuring smooth integration and high performance."
+              "Responsible for executing tasks assigned by the Business Analyst Team to perform web maintenance and development for E-SKA (Electronic Certificate of Origin)—a system developed by the Ministry of Trade for all SKA Issuing Agencies (IPSKA).",
+              "Developed and enhanced web application modules using React.js as the frontend framework, Node.js for backend services, and PostgreSQL as the database, ensuring smooth integration and high performance across the system."
+            ]}
+          />
+
+          <ExperienceItem 
+            date="03/22 – 08/23"
+            title="Practicum Assistant"
+            company="Informatics Department, Diponegoro University"
+            details={[
+              "Taught basic MySQL to Informatics students at the Informatics Department, Universitas Diponegoro.",
+              "Provided instruction on basic numerical methods, covering integrals, differentials, coding logic, and Python programming.",
+              "Conducted lessons in 2 classes, each consisting of 30 students, ensuring hands-on learning and practical implementation of concepts."
             ]}
           />
           
           <ExperienceItem 
             date="02/23 – 05/23"
             title="Internship Software Engineer"
-            company="PT Inspirasi Bisnis Nusantara (Haus! Indonesia) | West Jakarta"
+            company="PT Inspirasi Bisnis Nusantara (Haus! Indonesia) | West Jakarta (Hybrid)"
             details={[
-              "Developed a website for Haus Employee Learning Methods (E-Learning) using Python with the Odoo framework (ERP), incorporating 5-10 modules for efficient management of learning content."
+              "The website developed for Haus Employee Learning Methods, commonly referred to as E-Learning, is designed to help Haus employees enhance their skills through the Haus E-Learning platform.",
+              "The website was developed using Python with the Odoo framework, which is based on ERP (Enterprise Resource Planning), enabling efficient management of learning content and user interactions. Additionally, the ERP-based system incorporates 5-10 modules."
             ]}
           />
 
@@ -120,58 +160,47 @@ export default function Home() {
 
       {/* Projects Section */}
       <section id="projects" className={styles.sectionWrapper}>
-        <h2 className="section-title">active_deployments</h2>
+        <h2 className="section-title">Portfolio & Projects</h2>
         <div className={styles.skillsGrid}>
           
-          <div className="terminal">
-            <div className="terminal-header">
-              <span style={{color: 'var(--text-secondary)', fontSize: '0.8rem'}}>production_tracking.sh</span>
-            </div>
-            <div style={{padding: '2rem'}}>
-              <h3 style={{color: 'var(--accent-blue)', marginBottom: '1.5rem', fontSize: '1.2rem'}}>Production Tracking Pipe Processing</h3>
-              <p style={{color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: '1.6'}}>
-                Developed using Python (Flask) and PostgreSQL to monitor and optimize pipeline production processes, deployed with Nginx, Apache, Docker, and Daemon services for scalable, reliable, and real-time operational visibility.
-              </p>
-              <div className={styles.skillTags}>
-                <span className={styles.tag}>Python</span>
-                <span className={styles.tag}>Flask</span>
-                <span className={styles.tag}>Docker</span>
-                <span className={styles.tag}>Nginx</span>
-              </div>
+          <div className={styles.projectCard}>
+            <h3>PortalBUMDes – SaaS Management Platform</h3>
+            <p style={{color: 'var(--accent-primary)', marginBottom: '0.5rem'}}>Fullstack Developer | 08/25 – now</p>
+            <p>
+              Developed and managed PortalBUMDes, a subscription-based SaaS platform for BUMDes (Village-Owned Enterprises) to manage village websites, administrative activities, and operational reporting. Independently handled the entire development lifecycle using Laravel, from requirement analysis, system design, feature development to production deployment.
+            </p>
+            <div className={styles.skillTags}>
+              <span className={styles.tag}>Laravel</span>
+              <span className={styles.tag}>PHP</span>
+              <span className={styles.tag}>SaaS</span>
+              <span className={styles.tag}>Fullstack</span>
             </div>
           </div>
 
-          <div className="terminal">
-            <div className="terminal-header">
-              <span style={{color: 'var(--text-secondary)', fontSize: '0.8rem'}}>automation_sys.sh</span>
-            </div>
-            <div style={{padding: '2rem'}}>
-              <h3 style={{color: 'var(--accent-blue)', marginBottom: '1.5rem', fontSize: '1.2rem'}}>Automation System for Siemens & Yokogawa</h3>
-              <p style={{color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: '1.6'}}>
-                Developed an automated system to convert DAD files to XLSX using Python and TagUI, running on Linux with crontab scheduling, and integrated Grafana for real-time monitoring.
-              </p>
-              <div className={styles.skillTags}>
-                <span className={styles.tag}>Python</span>
-                <span className={styles.tag}>Linux</span>
-                <span className={styles.tag}>Cron</span>
-                <span className={styles.tag}>Grafana</span>
-              </div>
+          <div className={styles.projectCard}>
+            <h3>IPOS Gangsal Pandawa – Retail Management System</h3>
+            <p style={{color: 'var(--accent-primary)', marginBottom: '0.5rem'}}>Fullstack Developer | 04/26 – now</p>
+            <p>
+              Developed and managed IPOS Gangsal Pandawa, a comprehensive retail management system using Laravel to support end-to-end store operations, including cashier/POS transactions, stock opname, inventory management, warehouse transfers, income and expense tracking, and financial reporting. Independently handled the complete development lifecycle.
+            </p>
+            <div className={styles.skillTags}>
+              <span className={styles.tag}>Laravel</span>
+              <span className={styles.tag}>POS System</span>
+              <span className={styles.tag}>Inventory Management</span>
             </div>
           </div>
 
-          <div className="terminal">
-            <div className="terminal-header">
-              <span style={{color: 'var(--text-secondary)', fontSize: '0.8rem'}}>cpl_monitoring.sh</span>
-            </div>
-            <div style={{padding: '2rem'}}>
-              <h3 style={{color: 'var(--accent-blue)', marginBottom: '1.5rem', fontSize: '1.2rem'}}>CPL Monitoring (OBE)</h3>
-              <p style={{color: 'var(--text-secondary)', fontSize: '1rem', marginBottom: '2rem', lineHeight: '1.6'}}>
-                Designed and developed a web-based application to support the implementation and monitoring of Learning Outcomes (CPL) within the Informatics Department.
-              </p>
-              <div className={styles.skillTags}>
-                <span className={styles.tag}>Backend</span>
-                <span className={styles.tag}>Web Dev</span>
-              </div>
+          <div className={styles.projectCard}>
+            <h3>Bumdes Pro – BUMDes Financial Management SaaS</h3>
+            <p style={{color: 'var(--accent-primary)', marginBottom: '0.5rem'}}>Fullstack Developer | 08/25 – now</p>
+            <p>
+              Developed and maintained Bumdes Pro, a Laravel-based financial management platform for BUMDes (Village-Owned Enterprises), independently managing the end-to-end development lifecycle from requirements analysis, system and database design, feature development, testing, to production deployment, while implementing bookkeeping, financial transaction management, and reporting workflows to improve data accuracy, operational efficiency, and financial transparency.
+            </p>
+            <div className={styles.skillTags}>
+              <span className={styles.tag}>Laravel</span>
+              <span className={styles.tag}>SaaS</span>
+              <span className={styles.tag}>Financial Management</span>
+              <span className={styles.tag}>Bookkeeping</span>
             </div>
           </div>
 
@@ -180,47 +209,46 @@ export default function Home() {
 
       {/* Skills Section */}
       <section id="skills" className={styles.sectionWrapper}>
-        <h2 className="section-title">infrastructure_stack</h2>
+        <h2 className="section-title">Skills & Interests</h2>
         <div className={styles.skillsGrid}>
           
           <div className={styles.skillCategory}>
-            <h3>DevOps & Infrastructure</h3>
-            <div className={styles.skillTags}>
-              <span className={styles.tag}>Docker</span>
-              <span className={styles.tag}>Linux</span>
-              <span className={styles.tag}>Nginx</span>
-              <span className={styles.tag}>Apache</span>
-              <span className={styles.tag}>Daemon</span>
-              <span className={styles.tag}>Cron</span>
-              <span className={styles.tag}>Infrastructure Automation</span>
-              <span className={styles.tag}>System Monitoring</span>
-            </div>
-          </div>
-
-          <div className={styles.skillCategory}>
-            <h3>Languages & Frameworks</h3>
+            <h3>Technical Skills</h3>
             <div className={styles.skillTags}>
               <span className={styles.tag}>Python</span>
-              <span className={styles.tag}>JavaScript</span>
+              <span className={styles.tag}>PostgreSQL</span>
+              <span className={styles.tag}>Grafana</span>
+              <span className={styles.tag}>Airflow</span>
+              <span className={styles.tag}>MySQL</span>
+              <span className={styles.tag}>Linux</span>
+              <span className={styles.tag}>Daemon</span>
+              <span className={styles.tag}>Docker</span>
+              <span className={styles.tag}>Nginx</span>
               <span className={styles.tag}>PHP</span>
+              <span className={styles.tag}>JavaScript</span>
               <span className={styles.tag}>C</span>
-              <span className={styles.tag}>Java</span>
-              <span className={styles.tag}>Node Js</span>
-              <span className={styles.tag}>React Js</span>
+              <span className={styles.tag}>Node.js</span>
+              <span className={styles.tag}>React.js</span>
               <span className={styles.tag}>Laravel</span>
-              <span className={styles.tag}>Codeigniter</span>
+              <span className={styles.tag}>Java</span>
+              <span className={styles.tag}>CodeIgniter</span>
+              <span className={styles.tag}>Selenium IDE</span>
             </div>
           </div>
 
           <div className={styles.skillCategory}>
-            <h3>Databases & Tools</h3>
+            <h3>Soft Skills & Interests</h3>
             <div className={styles.skillTags}>
-              <span className={styles.tag}>Postgresql</span>
-              <span className={styles.tag}>Mysql</span>
-              <span className={styles.tag}>Grafana</span>
-              <span className={styles.tag}>Selenium IDE</span>
-              <span className={styles.tag}>RPA</span>
+              <span className={styles.tag}>Leadership</span>
+              <span className={styles.tag}>IT Operations</span>
+              <span className={styles.tag}>DevOps</span>
+              <span className={styles.tag}>Infrastructure Automation</span>
+              <span className={styles.tag}>System Monitoring</span>
+              <span className={styles.tag}>Industrial IT</span>
+              <span className={styles.tag}>Software Development</span>
+              <span className={styles.tag}>Quality Assurance</span>
               <span className={styles.tag}>Data Analytics</span>
+              <span className={styles.tag}>Robotic Process Automation (RPA)</span>
             </div>
           </div>
 
@@ -229,11 +257,11 @@ export default function Home() {
 
       {/* Organizations & Certificates Section */}
       <section id="org-certs" className={styles.sectionWrapper}>
-        <h2 className="section-title">Professional Associations</h2>
+        <h2 className="section-title">Organizations & Certificates</h2>
         <div className={styles.elegantGrid}>
           
           <div className={styles.elegantCard}>
-            <h3>Organizations</h3>
+            <h3>Organizations & Volunteering</h3>
             <ul className={styles.elegantList}>
               <li>
                 <strong>Head of Seniora Division</strong>
@@ -244,20 +272,20 @@ export default function Home() {
                 <span>Fokus Undip, Tegal & Semarang (06/22 - 06/23)</span>
               </li>
               <li>
-                <strong>Liaison Officer (Volunteer)</strong>
-                <span>ICICoS Informatics Department (09/22)</span>
+                <strong>Liaison Officer</strong>
+                <span>International Conference on Informatics and Computational Science (ICICoS) (09/22)</span>
               </li>
             </ul>
           </div>
 
           <div className={styles.elegantCard}>
-            <h3>Certifications</h3>
+            <h3>Certificates</h3>
             <ul className={styles.elegantList}>
-              <li><strong>Toefl Certificate</strong> <span>(543 Scores)</span></li>
-              <li><strong>Dicoding Academy</strong> <span>Visualisasi Data</span></li>
+              <li><strong>TOEFL Certificate</strong> <span>(543 Scores)</span></li>
+              <li><strong>Dicoding Academy</strong> <span>Certificate Visualisasi Data</span></li>
+              <li><strong>Dicoding Academy</strong> <span>Belajar Membuat Front-End Web Untuk Pemula</span></li>
               <li><strong>Oracle Academy</strong> <span>Primavera P6 Professional Fundamentals</span></li>
-              <li><strong>DQLAB</strong> <span>Introduction to Data Science with Python</span></li>
-              <li><strong>UNDIP FPIK</strong> <span>LKMM-PD (Latihan Keterampilan Manajemen Mahasiswa Dasar)</span></li>
+              <li><strong>Official Exam</strong> <span>AWS Certified CloudOps Engineer - Associate (SOA-CO3)</span></li>
             </ul>
           </div>
 
@@ -266,34 +294,28 @@ export default function Home() {
 
       {/* Contact Section */}
       <section id="contact" className={styles.sectionWrapper} style={{minHeight: 'auto', marginBottom: '5rem'}}>
-        <h2 className="section-title">establish_connection</h2>
+        <h2 className="section-title">Get In Touch</h2>
         <div className={styles.contactGrid}>
           <a href="mailto:rizalzeri@gmail.com" className={styles.contactCard}>
             <div className={styles.contactIcon}>✉️</div>
-            <h3 style={{color: 'var(--text-primary)', marginBottom: '1rem'}}>Email</h3>
-            <p style={{color: 'var(--text-secondary)'}}>rizalzeri@gmail.com</p>
+            <h3>Email</h3>
+            <p>rizalzeri@gmail.com</p>
           </a>
           <a href="https://www.linkedin.com/in/rizalzeri/" target="_blank" rel="noreferrer" className={styles.contactCard}>
             <div className={styles.contactIcon}>🔗</div>
-            <h3 style={{color: 'var(--text-primary)', marginBottom: '1rem'}}>LinkedIn</h3>
-            <p style={{color: 'var(--text-secondary)'}}>linkedin.com/in/rizalzeri/</p>
+            <h3>LinkedIn</h3>
+            <p>linkedin.com/in/rizalzeri/</p>
           </a>
           <a href="tel:+6285290413373" className={styles.contactCard}>
             <div className={styles.contactIcon}>📞</div>
-            <h3 style={{color: 'var(--text-primary)', marginBottom: '1rem'}}>Phone</h3>
-            <p style={{color: 'var(--text-secondary)'}}>(+62) 85290413373</p>
-          </a>
-          <a href="https://l1nk.dev/portofolio-rizal-zeri" target="_blank" rel="noreferrer" className={styles.contactCard}>
-            <div className={styles.contactIcon}>🌐</div>
-            <h3 style={{color: 'var(--text-primary)', marginBottom: '1rem'}}>Portfolio Link</h3>
-            <p style={{color: 'var(--text-secondary)'}}>l1nk.dev/portofolio-rizal-zeri</p>
+            <h3>Phone</h3>
+            <p>(+62) 85290413373</p>
           </a>
         </div>
       </section>
 
-      <footer style={{ textAlign: 'center', padding: '3rem', borderTop: '1px solid var(--surface-border)', color: 'var(--text-secondary)', fontFamily: 'var(--font-geist-mono)' }}>
-        <p>sys.exit(0) // System terminated successfully.</p>
-        <p style={{marginTop: '1rem', fontSize: '0.85rem', color: 'var(--surface-border)'}}>© 2026 Rizal Zeri Subakti</p>
+      <footer style={{ textAlign: 'center', padding: '3rem', borderTop: '1px solid var(--surface-border)', color: 'var(--text-secondary)' }}>
+        <p>© 2026 Rizal Zeri Subakti. All rights reserved.</p>
       </footer>
     </div>
   );
