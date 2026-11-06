@@ -388,7 +388,7 @@ export default function Home() {
           {/* Status badge */}
           <div className={styles.heroBadge}>
             <span className={styles.heroBadgeDot}></span>
-            Available for opportunitiess
+            Available for opportunities
           </div>
 
           <h1 className={styles.heroName}>Rizal Zeri Subakti</h1>
