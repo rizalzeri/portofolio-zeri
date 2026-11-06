@@ -7,16 +7,6 @@ pipeline {
   }
 
   stages {
-    stage('Install & Build (cek kode)') {
-      agent {
-        docker { image 'node:20-alpine'; reuseNode true }
-      }
-      steps {
-        sh 'npm ci'
-        sh 'npm run build'
-      }
-    }
-
     stage('Build image') {
       steps {
         sh 'docker build -t ${IMAGE}:${GIT_COMMIT} -t ${IMAGE}:latest .'
@@ -40,6 +30,9 @@ pipeline {
   post {
     failure {
       sh 'kubectl rollout undo deploy/portofolio || true'
+    }
+    always {
+      sh 'docker image prune -f || true'
     }
   }
 }
