@@ -15,7 +15,7 @@ pipeline {
 
     stage('Import ke k3s') {
       steps {
-        sh 'docker save ${IMAGE}:${GIT_COMMIT} | sudo /usr/local/bin/k3s ctr images import -'
+        sh 'docker save ${IMAGE}:${GIT_COMMIT} | sudo /usr/bin/ctr -n k8s.io images import -'
       }
     }
 
